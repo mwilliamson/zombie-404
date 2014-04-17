@@ -1,0 +1,460 @@
+@font-face {
+    font-family: 'YouMurdererBBRegular';
+    src: url('fonts/youmurdererbb_reg-webfont.eot');
+    src: url('fonts/youmurdererbb_reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/youmurdererbb_reg-webfont.woff') format('woff'),
+         url('fonts/youmurdererbb_reg-webfont.ttf') format('truetype'),
+         url('fonts/youmurdererbb_reg-webfont.svg#YouMurdererBBRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cursor {
+    position: absolute;
+    z-index: 1000000;
+}
+
+.cursor div {
+    width: 120px;
+    height: 120px;
+}
+
+.cursor-crosshairs {
+    display: none;
+    background-image: url(images/crosshairs.png);
+}
+
+.cursor-hand {
+    display: none;
+    background-image: url(images/hand.png);
+}
+
+.cursor-selected-gun .cursor-crosshairs {
+    display: block;
+}
+
+.cursor-selected-hand .cursor-hand {
+    display: block;
+}
+
+.blackout {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background-color: #000;
+    opacity: 0;
+}
+
+.game-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100000;
+    font:  7em YouMurdererBBRegular;
+    color: #f00;
+}
+
+.damage-indicator div {
+    position: fixed;
+    z-index: 10000;
+}
+
+.damage-indicator-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(images/damage-indicator-top.png);
+}
+
+.damage-indicator-right {
+    bottom: 150px;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    background: url(images/damage-indicator-right.png);
+}
+
+.damage-indicator-bottom {
+    bottom: 150px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(images/damage-indicator-bottom.png);
+}
+
+.damage-indicator-left {
+    bottom: 150px;
+    left: 0;
+    width: 100px;
+    height: 100%;
+    background: url(images/damage-indicator-left.png);
+}
+
+.gameComponents {
+	display: none;
+	z-index: 2;
+    overflow: hidden;
+}
+
+.gamePanel {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.statusPanel {
+    font:  5.5em YouMurdererBBRegular;
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 150px;
+	background-image: url('statuspanelimages/statusPanelTile.png');
+}
+
+.instructionsPanel {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1006px;
+	height: 501px;
+	z-index: 10000;
+	background-image: url('instructions.png');
+}
+
+#gameOverPanel { display: none; }
+
+.statusBar {
+	position: absolute;
+	bottom: 0px;
+	left: 200px;
+	width: 1000px;
+	height: 130px;
+	background-image: url('statuspanelimages/statusbar.png');
+	border: 0px;
+}
+
+.statusHand {
+	position: absolute;
+	left: 62px;
+	top: 16px;
+	width: 72px;
+	height: 50px;
+}
+
+.statusHand {
+    background-image: url('statuspanelimages/handdisabled.png')
+}
+
+.status-tool-hand .statusHand {
+    background-image: url('statuspanelimages/hand.png');
+}
+
+.statusGun {
+	position: absolute;
+	left: 62px;	
+	top: 73px;
+	width: 72px;
+	height: 50px;
+}
+
+.statusGun {
+    background-image: url('statuspanelimages/gundisabled.png');
+}
+
+.status-tool-gun .statusGun {
+    background-image: url('statuspanelimages/gun.png');
+}
+
+.statusZK {
+	position: absolute;
+	left: 429px;	
+	top: 33px;
+	color: green;
+}
+
+.statusKS {
+	position: absolute;
+	left: 660px;	
+	top: 33px;
+	color: green;
+}
+
+.statusKSnomnomnom {
+    background-image: url('statuspanelimages/kitty-feast.png');
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 10px;
+    left: 590px;
+    display: none;
+}
+
+.statusKK {
+	position: absolute;
+	left: 860px;	
+	top: 33px;
+	color: red;
+}
+
+.statusHealth {
+	position: absolute;
+	left: 175px;	
+	top: 75px;
+	width: 129px;
+	height: 32px;
+}
+
+#statusHealth0 { background-image: url('statuspanelimages/Health Bar_0.png'); }
+#statusHealth1 { background-image: url('statuspanelimages/Health Bar_1.png'); }
+#statusHealth2 { background-image: url('statuspanelimages/Health Bar_2.png'); }
+#statusHealth3 { background-image: url('statuspanelimages/Health Bar_3.png'); }
+#statusHealth4 { background-image: url('statuspanelimages/Health Bar_4.png'); }
+#statusHealth5 { background-image: url('statuspanelimages/Health Bar_5.png'); }
+#statusHealth6 { background-image: url('statuspanelimages/Health Bar_6.png'); }
+#statusHealth7 { background-image: url('statuspanelimages/Health Bar_7.png'); }
+#statusHealth8 { background-image: url('statuspanelimages/Health Bar_8.png'); }
+#statusHealth9 { background-image: url('statuspanelimages/Health Bar_9.png'); }
+#statusHealth10 { background-image: url('statuspanelimages/Health Bar_10.png'); }
+
+.covers div {
+	position: absolute;
+	background: #000000;
+	z-index: 2;
+}
+
+.leftPanel {
+	left: 0px;
+	top: 0px;
+	height: 100%;
+}
+
+.topPanel {
+	left: 0px;
+	top: 0px;
+	width: 100%;
+}
+
+.rightPanel {
+	right: 0px;
+	height: 100%;
+	top: 0px;
+}
+
+.bottomPanel {
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+}
+
+.torchLight {
+	position: absolute;
+	left: 200px;
+	top: 200px;
+	width: 350px;
+	height: 350px;
+	z-index: 2;
+	background-image: url('torchlight.png');
+}
+
+.torchLightCover {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 350px;
+	height: 350px;
+	background: #000000;
+	opacity: 0.0;
+}
+
+.player {
+    position: absolute;
+	background-image: url('images/colin-left.png');
+    z-index: 3;
+    width: 120px;
+    height: 120px;
+}
+
+.player.left {
+    background-image: url('images/colin-left.png');
+}
+
+.player.right {
+	background-image: url('images/colin-right.png');
+}
+
+.player.up {
+	background-image: url('images/colin-up.png');
+}
+
+.player.down {
+	background-image: url('images/colin-down.png');
+}
+
+.player.animation-0.left {
+    background-image: url('images/colin0-left.png');
+}
+
+.player.animation-0.right {
+	background-image: url('images/colin0-right.png');
+}
+
+.player.animation-0.up {
+	background-image: url('images/colin0-up.png');
+}
+
+.player.animation-0.down {
+	background-image: url('images/colin0-down.png');
+}
+
+.player.animation-1.left {
+    background-image: url('images/colin1-left.png');
+}
+
+.player.animation-1.right {
+	background-image: url('images/colin1-right.png');
+}
+
+.player.animation-1.up {
+	background-image: url('images/colin1-up.png');
+}
+
+.player.animation-1.down {
+	background-image: url('images/colin1-down.png');
+}
+.player.dead {
+    background-image: url('images/colin-dead.png');
+    z-index: 0;
+}
+
+.kitty.dead, .zombie.dead {
+    z-index: 0
+}
+
+.kitty {
+	position: absolute;
+	width: 96px;
+	height: 96px;
+    z-index: 1;
+}
+.kitty.animation-0.left {
+	background: url('images/kitty0-left.png') no-repeat;
+}
+.kitty.animation-0.right {
+	background: url('images/kitty0-right.png') no-repeat;
+}
+.kitty.animation-1.left {
+	background: url('images/kitty1-left.png') no-repeat;
+}
+.kitty.animation-1.right {
+	background: url('images/kitty1-right.png') no-repeat;
+}
+.kitty.dead {
+	background: url('images/kitty-dead.png') no-repeat;
+}
+
+.zombie {
+	position: absolute;
+	width: 120px;
+	height: 120px;
+    z-index: 1;
+}
+.zombie.animation-0.left {
+	background: url('images/zombie0-left.png') no-repeat;
+}
+.zombie.animation-0.right {
+	background: url('images/zombie0-right.png') no-repeat;
+}
+.zombie.animation-1.left {
+	background: url('images/zombie1-left.png') no-repeat;
+}
+.zombie.animation-1.right {
+	background: url('images/zombie1-right.png') no-repeat;
+}
+.zombie.dead.left {
+	background: url('images/zombie-dead-left.png') no-repeat;
+}
+.zombie.dead.right {
+	background: url('images/zombie-dead-right.png') no-repeat;
+}
+
+
+.board {
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.floor {
+    position: absolute;
+    left: 0;
+    top: 0;
+	z-index: 0;
+	background-image: url('floorboards.jpg');
+}
+
+.walls {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+	z-index: 6;
+    border: solid 10px brown;
+	width: 100%;
+	height: 100%;
+}
+
+.bullets {
+	z-index: 5;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.scenery {
+    position: absolute;
+    z-index: 0;
+    width: 120px;
+    height: 120px;
+}
+.scenery.bone {
+    background-image: url('images/scenery/bone.png');
+}
+.scenery.kittyclawdeath {
+    background-image: url('images/scenery/kittyclawdeath.png');
+}
+
+
+/***** THE STATIC STUFF *****/
+
+
+.initial-content {background:url('static/background-start.png') top center no-repeat; }
+#gameOverPanel {background:url('static/background-game-over.png') top center no-repeat; }
+#footer {display:none;}
+
+#nav #logo {height:83px;}
+#nav {padding:0; height:150px;}
+
+#zombie-button {width:361px; height:103px; background:url('static/button-start-off.png') no-repeat; margin:20px 0 280px -15px; cursor:pointer;}
+#zombie-button:hover {background:url('static/button-start-on.png') no-repeat;}
+#zombie-button.play-again {background:url('static/button-again-off.png') no-repeat;}
+#zombie-button.play-again:hover {background:url('static/button-again-on.png') no-repeat;}
+
+p.evil-text {font:48px YouMurdererBBRegular; color:#8c0000; margin:-20px 0 40px 0; padding:0}
+p.evil-scores {font-size:36px; margin:0; color:#000}
+p.evil-number {font-size:36px; margin:0; color:#000;}
+p.evil-total {color:#8c0000; border-top:solid 1px; margin:20px 0 0 0;}
+
+p.evil-title {font-size:72px; margin:-35px 0 20px 0}
+p.evil-rank {font:28px YouMurdererBBRegular; color:#000000; margin:-10px 0 0 0; padding:0; }
+
+.scoreboard {width:225px; float:right; }
+.scores {width:80px; float:right; text-align:right; margin:0 80px 0 0}
+
+.social {height:50px; margin:0 0 10px 0; width:400px}
